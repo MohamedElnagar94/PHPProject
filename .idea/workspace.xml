@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="363e3671-9386-4205-8fe2-b23475038172" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_1/addProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_1/addProduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_1/editProduct.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_1/page_general_blog_post.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_1/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_1/products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_1/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_1/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/global/css/components.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/global/css/components.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/pages/css/MyStyleSheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/MyApp/MyStyleSheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/pages/scripts/MyScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/MyApp/MyScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/loginControllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/loginControllers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/productsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/productsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/helpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/sideBar.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sideBar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_1/1.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,15 +40,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="884">
               <caret line="34" column="33" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin_1/1.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="4" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -217,7 +193,7 @@
     </option>
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="235" />
     <option name="y" value="-10" />
     <option name="width" value="980" />
@@ -349,15 +325,15 @@
       <workItem from="1583603687721" duration="36484000" />
       <workItem from="1583681108214" duration="10139000" />
       <workItem from="1583958900281" duration="5434000" />
-      <workItem from="1583994096185" duration="2609000" />
+      <workItem from="1583994096185" duration="2983000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187003000" />
+    <option name="totallyTimeSpent" value="187377000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19194631" />
