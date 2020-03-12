@@ -45,9 +45,9 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                             <div class="portlet light bordered">
                                 <div class="portlet-title">
                                     <div class="btn-group">
-                                        <button id="sample_editable_1_new" class="btn green"> Add New User
+                                        <a href="addUser.php" id="sample_editable_1_new" class="btn green text-decoration-none"> Add New User
                                             <i class="fa fa-plus"></i>
-                                        </button>
+                                        </a>
                                     </div>
                                     <div class="tools"></div>
                                 </div>
@@ -72,7 +72,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                         while($row = mysqli_fetch_assoc($result)) {
                                             ?>
                                             <tr>
-                                                <td> <?php echo $count++ ?> </td>
+                                                <td> <?php echo $row["id"] ?> </td>
                                                 <td> <?php echo $row["user_name"] ?> </td>
                                                 <td> <?php echo $row["room_name"] ?> </td>
                                                 <td><img class="d-flex" style="width: 115px;margin: 0 auto" src="../assets/Images/<?php echo $row["user_img"] ?>" alt="" /> </td>

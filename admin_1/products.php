@@ -72,7 +72,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["email"])) {
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 ?>
                                                 <tr>
-                                                    <td> <?php echo $count++ ?> </td>
+                                                    <td> <?php echo $row["id"] ?> </td>
                                                     <td> <?php echo $row["product_name"] ?> </td>
                                                     <td> $<?php echo $row["price"] ?> </td>
                                                     <td><img class="d-flex" style="width: 115px;margin: 0 auto"

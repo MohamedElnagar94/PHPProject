@@ -53,7 +53,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN PAGE LEVEL STYLES -->
     <link href="../assets/pages/css/login.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/pages/css/blog.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/pages/css/MyStyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/MyApp/MyStyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/MyApp/style.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />

@@ -48,3 +48,22 @@ if(isset($_POST['deleteProduct'])){
         echo "false";
     }
 }
+
+require_once 'productclass.php';
+$product = new Product();
+if(isset($_POST['signup']))
+{
+    //echo $product->validate_products();
+    echo $product->validate_products();
+    $product->set_product_name($_POST['product_name']);
+    $product->get_product_name();
+    $product->set_product_price($_POST['product_price']);
+    $product->set_product_img($_FILES['categoryImg']['name']);
+    if($product->validate_products()==0)
+        $product-> addItem();
+
+    else {
+        header("Location:products.php");
+    }
+
+}

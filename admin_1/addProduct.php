@@ -39,7 +39,61 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
 
                 <div class="blog-page blog-content-2">
                     <div class="row">
+                        <div class="main">
+                        <!-- Sign up form -->
+                            <section class="signup">
+                                <div class="container">
+                                    <div class="signup-content">
+                                        <div class="signup-form">
+                                            <h2 class="form-title">Add Product</h2>
+                                            <form method="POST" class="register-form" id="register-form" enctype="multipart/form-data" action="../controllers/productsController.php">
+                                                <div class="form-group">
+                                                    <label for="productName"></label>
+                                                    <input type="text" name="product_name" id="product_name" placeholder="Product Name"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Price"></label>
+                                                    <input type="number" name="product_price" id="price" placeholder="Product's Price"/>
+                                                </div>
 
+                                                <div class="form-group">
+                                                <span>Category</span>
+                                                <select class="form-control form-control-md" name="categorySelect">
+                                                    <option value="" selected disabled>Select</option>
+                                                <?php 
+                                                $conn=mysqli_connect("localhost","root","","cafeedb");
+                                                $res=mysqli_query($conn,"select * from category");
+
+                                                while($row = mysqli_fetch_array($res)){
+                                                ?>
+                                                    <option value=<?php echo $row["id"]?>> <?php echo $row["category_name"]?></option>
+                                                <?php 
+                                                }
+                                                ?>
+                                                </select>
+                                                </div> 
+                                                <div class="form-group">          
+                                                    <div class="file-field">
+                                                        <div class="btn  btn-sm float-left">
+                                                            <input type="file" name="categoryImg">
+                                                        </div>                                                   
+                                                    </div>
+                                                </div>   
+                                                <div class="form-group form-button">
+                                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Save"/>
+                                                    <input type="submit" name="reset" id="reset" class="form-submit" value="Reset"/>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="signup-image">
+                                            <figure><img src="../assets/Images/signup-image.jpg" alt="sing up image"></figure>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,10 +104,10 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
     <!-- END CONTAINER -->
     <?php include "../includes/footer.php"?>
     </body>
-    </html>
-    <?php
-}else{
-    header("location:page_user_login_1.php");
-}
+</html>
+<?php
+    }else{
+        header("location:page_user_login_1.php");
+    }
 
 ?>

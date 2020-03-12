@@ -50,4 +50,4 @@
 <script src="../assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
 <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
-<script src="../assets/pages/scripts/MyScript.js" type="text/javascript"></script>
+<script src="../assets/MyApp/MyScript.js" type="text/javascript"></script>

@@ -43,7 +43,7 @@
             <li class="heading">
                 <h3 class="uppercase">Pages</h3>
             </li>
-            <li class="nav-item <?php  helpers::checkUrlActive(["products.php","users.php","manual_orders.php","checks.php","addProduct.php"])?>">
+            <li class="nav-item <?php  helpers::checkUrlActive(["products.php","users.php","manual_orders.php","checks.php","addProduct.php","addUser.php"])?>">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-user"></i>
 
@@ -51,14 +51,14 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item <?php  helpers::checkUrlActive(["products.php","addProduct.php"])?>">
+                    <li class="nav-item <?php  helpers::checkUrlActive(["products.php","addProduct.php"]);?>">
                         <a href="products.php" class="nav-link nav-toggle">
                             <i class="icon-bag"></i>
                             <span class="title">Products</span>
                             <span class="selected"></span>
                         </a>
                     </li>
-                    <li class="nav-item <?php  helpers::checkUrlActive(["users.php"])?>">
+                    <li class="nav-item <?php  helpers::checkUrlActive(["users.php","addUser.php"])?>">
                         <a href="users.php" class="nav-link nav-toggle">
                             <i class="icon-users"></i>
                             <span class="title">Users</span>
