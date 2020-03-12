@@ -43,7 +43,7 @@
             <li class="heading">
                 <h3 class="uppercase">Pages</h3>
             </li>
-            <li class="nav-item <?php  helpers::checkUrlActive(["products.php","users.php","manual_orders.php","checks.php","addProduct.php","addUser.php"])?>">
+            <li class="nav-item <?php  helpers::checkUrlActive(["products.php","users.php","manual_orders.php","checks.php","addProduct.php","addUser.php","orders.php"])?>">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-user"></i>
 
