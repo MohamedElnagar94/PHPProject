@@ -277,3 +277,10 @@ table {
         width: 100%;
     }
 }
+
+.login {
+    background-color: #5c97bd !important;
+}
+.login .content {
+    background-color: #5c97bd !important;
+}

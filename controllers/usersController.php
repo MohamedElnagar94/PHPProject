@@ -1,17 +1,38 @@
 <?php
 include "../database/connection.php";
 session_start();
-// echo $_FILES["user_img"]["tmp_name"];
-echo "<pre>";
-print_r($_POST);
-print_r($_FILES);
-echo "</pre>";
-// $query = "SELECT * FROM rooms,users WHERE users.room_id = rooms.id";
-// $result = mysqli_query($connect,$query);
-// $row = mysqli_fetch_assoc($result);
-// echo "<pre>";
-// print_r($row);
-// echo "</pre>";
+if (isset($_POST['login'])) {
+    $pdo = new PDO("mysql:host=localhost;dbname=cafeedb", "root", "");
+
+    if ($pdo) {
+        $password = md5($_POST["password"]);
+        $stm = $pdo->query("select * from users where email='{$_POST['email']}' and password='{$password}'");
+        if ($stm) {
+            $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+            if ($result) {
+                //   session_start();
+                //  $_SESSION['id']=$row['id'];
+                //  $_SESSION['fullname']=$row['username'];
+                //  echo $_SESSION['fullname'];
+                $_SESSION['username'] = $result[0]["user_name"];
+                $_SESSION['email'] = $result[0]["email"];
+                header("Location:../admin_1/index.php");
+//                echo "<pre>";
+//                 print_r($result[0]);
+//                echo "</pre>";
+
+                echo "welecome user";
+            }
+
+            if (!$result) {
+                 header("Location:../admin_1/login.php");
+                // var_dump($result);
+                echo "errrorrrrr";
+
+            }
+        }
+    }
+}
 if (isset($_POST["saveEdit"])) {
     $target_dir = "../assets/Images/";
     $target_file = $target_dir . basename($_FILES["user_img"]["name"]);

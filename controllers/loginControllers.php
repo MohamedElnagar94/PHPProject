@@ -42,6 +42,25 @@ if (isset($_POST['email']) && isset( $_POST['password'])){
     }
 
 }
+
+if(isset($_POST['remember'])){
+    $pdo= new PDO("mysql:host=localhost;dbname=cafeedb","root","");
+
+    if($pdo){
+        $stm= $pdo->query("select * from users where email='{$_POST['email']}' and confirm_code='{$_POST['confirm_code']}'");
+        if($stm){
+            $result=$stm->fetchAll(PDO::FETCH_ASSOC);
+            if($result){
+                header("Location:../admin_1/login.php");
+            }
+
+            if(!$result){
+                header("Location:../admin_1/forgotPassword.php");
+
+            }
+        }
+    }
+}
 //else{
 //    $obj = [
 //        "error" => "not found",

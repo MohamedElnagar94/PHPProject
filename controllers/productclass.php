@@ -55,12 +55,13 @@ class Product {
         $product_img=$_FILES['categoryImg']['name'];
         $category_id=$_POST['categorySelect'];
         $product_img_tmp=$_FILES['categoryImg']['tmp_name'];
-        
+//        $extention=$_FILES['categoryImg']['type'];
+        print_r($_FILES);
 
         $conncet=mysqli_connect("localhost","root","","cafeedb");
         if($conncet)
         {
-        $insert_res=mysqli_query($conncet,"insert into products (product_name,price,category_id,product_img) values('$product_name','$product_price','$category_id','$product_img')");
+        $insert_res=mysqli_query($conncet,"insert into products (product_name,price,category_id,product_img,status) values('$product_name','$product_price','$category_id','$product_img',0)");
 
         if($insert_res)
         {
