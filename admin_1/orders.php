@@ -75,11 +75,11 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                             $queryAllOrdersPrice = "SELECT * FROM users,orders,orders_count,products WHERE orders.user_id = $user_id AND users.id = $user_id AND orders.id = $order_id AND orders_count.order_id = $order_id AND products.id = orders_count.product_id";
                                             $resultAllOrdersPrice = mysqli_query($connect, $queryAllOrdersPrice);
                                             while($rowAllOrdersPrice = mysqli_fetch_assoc($resultAllOrdersPrice)) {
-                                                $totalOrdersPrice += $rowAllOrdersPrice['count'] * $rowAllOrdersPrice['price'] ;
+                                                $totalOrdersPrice += $rowAllOrdersPrice['amount'] * $rowAllOrdersPrice['price'] ;
                                             }
                                             ?>
                                             <td data-title="Total Price"><?php echo $totalOrdersPrice ?></td>
-                                            <td data-title="Action"><?php if($rowOrders['state'] == 0){echo 'processing';}else if($rowUser['state'] == 1){echo 'Out For Delivery';}else{echo 'Done';} ?></td>
+                                            <td data-title="Action"><?php if($rowOrders['state'] == 0){echo 'processing';}else if($rowOrders['state'] == 1){echo 'Out For Delivery';}else{echo 'Done';} ?></td>
 
                                         </tr>
                                         <tr>
@@ -90,7 +90,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                                         <tr>
                                                             <td class="col-xs-4 col-sm-2 text-center productsIcon">
                                                                 <?php
-                                                                $queryProducts = "SELECT * FROM orders,orders_count,products WHERE orders.id = 1 AND orders_count.order_id = $order_id AND products.id = orders_count.product_id";
+                                                                $queryProducts = "SELECT * FROM orders,orders_count,products WHERE orders.id = $order_id AND orders_count.order_id = $order_id AND products.id = orders_count.product_id";
                                                                 $resultProducts = mysqli_query($connect, $queryProducts);
                                                                 while ($rowProducts = mysqli_fetch_assoc($resultProducts)) {
                                                                     ?>
@@ -100,7 +100,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                                                         <div style="margin-bottom: 0">
                                                                             <?php echo $rowProducts['product_name'] ?>
                                                                         </div>
-                                                                        <div style="margin-bottom: 0;margin-top: 10px">Count : <span><?php echo $rowProducts['count'] ?></span></div>
+                                                                        <div style="margin-bottom: 0;margin-top: 10px">Count : <span><?php echo $rowProducts['amount'] ?></span></div>
                                                                         <span class="badge badge-info" style="width: 40px;height: 30px;display: flex;justify-content: center;align-items: center;font-size: 15px !important;"> <?php echo $rowProducts['price'] ?> </span>
                                                                     </a>
                                                                     <?php

@@ -16,6 +16,7 @@ if (isset($_POST['login'])) {
                 //  echo $_SESSION['fullname'];
                 $_SESSION['username'] = $result[0]["user_name"];
                 $_SESSION['email'] = $result[0]["email"];
+                $_SESSION['id'] = $result[0]["id"];
                 header("Location:../admin_1/index.php");
 //                echo "<pre>";
 //                 print_r($result[0]);

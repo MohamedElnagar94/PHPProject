@@ -114,8 +114,10 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                         }
                                         $resultAllPrice = mysqli_query($connect, $queryAllPrice);
                                         while($rowAllPrice = mysqli_fetch_assoc($resultAllPrice)) {
-                                            $totalProductsPrice += $rowAllPrice['count'] * $rowAllPrice['price'] ;
-//                                            echo $totalProductsPrice.'<br>';
+//                                            echo "<pre>";
+//                                            print_r($rowAllPrice);
+//                                            echo "</pre>";
+                                            $totalProductsPrice += $rowAllPrice['amount'] * $rowAllPrice['price'] ;
                                         }
                                         ?>
                                             <td data-title="Type"><?php echo $totalProductsPrice ?></td>
@@ -154,7 +156,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                                             $queryAllOrdersPrice = "SELECT * FROM users,orders,orders_count,products WHERE orders.user_id = $user_id AND users.id = $user_id AND orders.id = $order_id AND orders_count.order_id = $order_id AND products.id = orders_count.product_id";
                                                             $resultAllOrdersPrice = mysqli_query($connect, $queryAllOrdersPrice);
                                                             while($rowAllOrdersPrice = mysqli_fetch_assoc($resultAllOrdersPrice)) {
-                                                                $totalOrdersPrice += $rowAllOrdersPrice['count'] * $rowAllOrdersPrice['price'] ;
+                                                                $totalOrdersPrice += $rowAllOrdersPrice['amount'] * $rowAllOrdersPrice['price'] ;
                                                             }
                                                             ?>
                                                             <td data-title="Type"><?php echo $totalOrdersPrice ?></td>
@@ -177,7 +179,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                                                                     <div style="margin-bottom: 0">
                                                                                         <?php echo $rowProducts['product_name'] ?>
                                                                                     </div>
-                                                                                    <div style="margin-bottom: 0;margin-top: 10px">Count : <span><?php echo $rowProducts['count'] ?></span></div>
+                                                                                    <div style="margin-bottom: 0;margin-top: 10px">Count : <span><?php echo $rowProducts['amount'] ?></span></div>
                                                                                     <span class="badge badge-info" style="width: 40px;height: 30px;display: flex;justify-content: center;align-items: center;font-size: 15px !important;"> <?php echo $rowProducts['price'] ?> </span>
                                                                                 </a>
                                                                             <?php

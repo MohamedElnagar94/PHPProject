@@ -3,6 +3,47 @@ session_start();
 if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
     include "../includes/header.php";
     include "../database/connection.php";
+//    require_once("../controllers/orders.class.php");
+//    $orders = new orders();
+////    $arr;
+////    $filteredorders;
+////    $res;
+//    $total_price = 0;
+//    echo $_SESSION['id'];
+//    $endresult = $orders->ordersFun(2);
+//
+//    $directory = "../assets/Images";
+//    $images = glob($directory . "/*.jpg");
+//
+//    while ($rowOrder = mysqli_fetch_assoc($endresult)) {
+////        $arr[] = $rowOrder;
+//    }
+//    $orders = array();
+//    $startDate = 0;
+//    $endDate = 0;
+////    foreach ($arr as $element) {
+////        $orders[$element['id']][] = $element;
+////    }
+//    if (isset($_GET['ok']) && !empty($_GET['ok'])) {
+//
+//        $startDate = new DateTime($_GET['startDate']);
+//
+//        $endDate = new DateTime($_GET['endDate']);
+//        // var_dump($startDate);
+//        if ($startDate != NULL && $endDate != NULL) {
+//            $filteredorders = array_filter($orders, function ($item) {
+//                $orderdate = new DateTime($item[0]["date"]);
+//                // var_dump($orderdate);
+//                if ($orderdate >= $GLOBALS['startDate'] && $orderdate <= $GLOBALS ['endDate'])
+//                    return TRUE;
+//                else
+//                    return FALSE;
+//            });
+//        }
+//    } else {
+//        $filteredorders = $orders;
+//    }
+
     ?>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
     <?php include "../includes/navBar.php"?>
@@ -40,22 +81,6 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
 
                 <div class="blog-page blog-content-2">
                     <div class="row">
-                        <form action="#" method="get" class="form-horizontal form-bordered margin-bottom-20">
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Date Range</label>
-                                <div class="col-md-4">
-                                    <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
-                                        <input type="text" autocomplete="false" class="form-control" name="startDate">
-                                        <span class="input-group-addon"> to </span>
-                                        <input type="text" autocomplete="false" class="form-control" name="endDate">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <input class="btn btn-primary" type="submit" id="dataSelected" name="ok">
-                                </div>
-                            </div>
-                            <hr>
-                        </form>
                         <div class="col-md-12 col-xs-12">
                             <!-- BEGIN EXAMPLE TABLE PORTLET-->
                             <div class="portlet light bordered">
@@ -73,23 +98,25 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                     <?php
                                     require_once("../controllers/orders.class.php");
                                     $orders = new orders();
-                                    $arr;
-                                    $filteredorders;
-                                    $res;
-                                    $total_price = 0;
+                                    //    $arr;
+                                    //    $filteredorders;
+                                    //    $res;
+
+
                                     $endresult = $orders->ordersFun($_SESSION['id']);
+
                                     $directory = "../assets/Images";
                                     $images = glob($directory . "/*.jpg");
-                                    while ($row = mysqli_fetch_assoc($endresult)) {
-                                        $arr[] = $row;
-                                    }
-                                    $orders = array();
+
+                                    //                                    while ($rowOrder = mysqli_fetch_assoc($endresult)) {
+                                    ////        $arr[] = $rowOrder;
+                                    //                                    }
+                                    //                                    $orders = array();
                                     $startDate = 0;
                                     $endDate = 0;
-                                    foreach ($arr as $element) {
-                                        $orders[$element['id']][] = $element;
-
-                                    }
+                                    //    foreach ($arr as $element) {
+                                    //        $orders[$element['id']][] = $element;
+                                    //    }
                                     if (isset($_GET['ok']) && !empty($_GET['ok'])) {
 
                                         $startDate = new DateTime($_GET['startDate']);
@@ -109,44 +136,48 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                     } else {
                                         $filteredorders = $orders;
                                     }
-                                    foreach ($filteredorders as $order) {
+                                    print_r($endresult);
+                                    //                                    $rowOrder = mysqli_fetch_assoc($endresult);
+                                    while ($rowOrder = mysqli_fetch_array($endresult)) {
+//                                        echo "<pre>";
+//                                        print_r($rowOrder);
+//                                        echo "</pre>";
                                         ?>
-                                        <tr>
-                                            <td role="button" data-toggle="collapse"  href="#order<?php echo $order[0]['id'] ?>" aria-expanded="false"
-                                                aria-controls="demo<?php echo $order[0]['id'] ?>" data-title="Order Date"><?php echo $order[0]['date'] ?></td>
-                                            <td role="button" data-toggle="collapse"  href="#order<?php echo $order[0]['id'] ?>" aria-expanded="false"
-                                                aria-controls="demo<?php echo $order[0]['id'] ?>" data-title="User Name"><?php echo $order[0]['user_name'] ?></td>
-                                            <td role="button" data-toggle="collapse"  href="#order<?php echo $order[0]['id'] ?>" aria-expanded="false"
-                                                aria-controls="demo<?php echo $order[0]['id'] ?>" data-title="Action"><?php if($order[0]['state'] == 'processing'){echo 'processing';}else if($order[0]['state'] == 'inprogress'){echo 'Out For Delivery';}else{echo 'Done';} ?></td>
+                                        <tr role="button" data-toggle="collapse" href="#order<?php echo $rowOrder['id'] ?>" aria-expanded="false"
+                                            aria-controls="demo<?php echo $rowOrder['id'] ?>">
+                                            <td data-title="Order Date"><?php echo $rowOrder['date'] ?></td>
+                                            <td data-title="User Name"><?php echo $rowOrder['user_name'] ?></td>
+                                            <td data-title="Action"><?php if($rowOrder['state'] == 0){echo 'processing';}else if($rowOrder['state'] == 1){echo 'Out For Delivery';}else{echo 'Done';} ?></td>
                                             <?php
-                                            $totalOrdersPrice = 0;
-                                            $queryAllOrdersPrice = "SELECT * FROM users,orders,orders_count,products WHERE orders.user_id = {$_SESSION['id']} AND users.id = {$_SESSION['id']} AND orders.id = {$order[0]['id']} AND orders_count.order_id = {$order[0]['id']} AND products.id = orders_count.product_id";
+
+                                            $total_price = 0;
+                                            $queryAllOrdersPrice = "SELECT * FROM users,orders,orders_count,products WHERE orders.user_id = $user_id AND users.id = $user_id AND orders.id = $order_id AND orders_count.order_id = $order_id AND products.id = orders_count.product_id";
                                             $resultAllOrdersPrice = mysqli_query($connect, $queryAllOrdersPrice);
                                             while($rowAllOrdersPrice = mysqli_fetch_assoc($resultAllOrdersPrice)) {
-                                                $totalOrdersPrice += $rowAllOrdersPrice['amount'] * $rowAllOrdersPrice['price'] ;
+                                                $totalOrdersPrice += $rowAllOrdersPrice['count'] * $rowAllOrdersPrice['price'] ;
+                                            }
+                                            foreach ($rowOrder as $item) {
+                                                $total_price += (int)$item['amount'] * (int)$item['price'];
                                             }
                                             ?>
-                                            <td role="button" data-toggle="collapse"  href="#order<?php echo $order[0]['id'] ?>" aria-expanded="false"
-                                                aria-controls="demo<?php echo $order[0]['id'] ?>" data-title="Total Price"><?php echo $totalOrdersPrice; ?></td>
-                                            <td>
-                                                <?php
-                                                if ($order[0]['state'] == "processing") {
-                                                    ?>
-                                                    <a href='../controllers/deleteController.php?_id=<?php echo $order[0]['id'] ?>'>Cancel</a>
-                                                    <?php
-                                                }
+                                            <td data-title="Total Price"><?php echo $total_price; ?></td>
+                                            <?php
+                                            if ($rowOrder['state'] == "processing") {
                                                 ?>
-                                            </td>
+                                                <a href='../controllers/deleteController.php?_id=<?php echo $rowOrder['id'] ?>'>Cancel</a>
+                                                <?php
+                                            }
+                                            ?>
                                         </tr>
                                         <tr>
                                             <td colspan="6" class="hiddenRow">
-                                                <div class="collapse" id="order<?php echo $order[0]['id'] ?>">
+                                                <div class="collapse" id="order<?php echo $rowOrder['id'] ?>">
                                                     <table class="table table-nested">
                                                         <tbody>
                                                         <tr>
                                                             <td class="col-xs-4 col-sm-2 text-center productsIcon">
                                                                 <?php
-                                                                $queryProducts = "SELECT * FROM orders,orders_count,products WHERE orders.id = {$order[0]['id']} AND orders_count.order_id = {$order[0]['id']} AND products.id = orders_count.product_id";
+                                                                $queryProducts = "SELECT * FROM orders,orders_count,products WHERE orders.id = {$rowOrder['id']} AND orders_count.order_id = {$rowOrder['id']} AND products.id = orders_count.product_id";
                                                                 $resultProducts = mysqli_query($connect, $queryProducts);
                                                                 while ($rowProducts = mysqli_fetch_assoc($resultProducts)) {
                                                                     ?>
@@ -156,7 +187,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["email"])){
                                                                         <div style="margin-bottom: 0">
                                                                             <?php echo $rowProducts['product_name'] ?>
                                                                         </div>
-                                                                        <div style="margin-bottom: 0;margin-top: 10px">Count : <span><?php echo $rowProducts['amount'] ?></span></div>
+                                                                        <div style="margin-bottom: 0;margin-top: 10px">Count : <span><?php echo $rowProducts['count'] ?></span></div>
                                                                         <span class="badge badge-info" style="width: 40px;height: 30px;display: flex;justify-content: center;align-items: center;font-size: 15px !important;"> <?php echo $rowProducts['price'] ?> </span>
                                                                     </a>
                                                                     <?php

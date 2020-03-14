@@ -34,11 +34,12 @@ include "../database/connection.php";
 ////    }
 //    }
 //}
-$queryOrders = "SELECT * FROM users,orders,orders_count WHERE orders.user_id = 2 AND users.id = 2 AND orders.id = orders_count.order_id AND orders.date BETWEEN '2020-03-01' AND '2020-03-01' GROUP BY orders_count.order_id";
-$resultOrders = mysqli_query($connect,$queryOrders);
-while($rowOrders = mysqli_fetch_assoc($resultOrders)) {
-
-//        $count += $row['count'] * $row['price'];
+$result=mysqli_query($connect,"SELECT *
+            from orders inner join users on users.id=orders.user_id
+            INNER JOIN orders_count on orders_count.order_id = orders.id 
+            INNER JOIN products on orders_count.product_id=products.id 
+            where orders.user_id=2 GROUP BY orders.id");
+while($rowOrders = mysqli_fetch_assoc($result)) {
     echo "<pre>";
     print_r($rowOrders);
     echo "</pre>";
